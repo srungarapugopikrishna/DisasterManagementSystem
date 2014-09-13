@@ -245,36 +245,14 @@ public class Database {
     public static void addPeopleDetailsToDB(PeopleDetails people) { 
         try {
             getConnected();
-            query = "INSERT INTO dms. people (`pid`,`did`, Name , `age`, `status`, rescued_location,present_location,contact_no,image,sex)"
-                    + "VALUES (" +people.getPersonID()+ ", "+people.getDisasterID()+ ", '" + people.getPersonName() + "', '" + people.getAge() + "', '" + people.getAliveStatus() + "', '" + people.getResucuedLocation() + "', '" + people.getPresentLocation() +"', '" + people.getMobile()+"', '"  + (people.getPersonID()+".jpg")+"', '" + people.getSex()+ "')";
+            query = "INSERT INTO dms. people (`did`, Name , `age`, `status`, rescued_location,present_location,contact_no,image,sex)"
+                    + "VALUES (" +people.getDisasterID()+ ", '" + people.getPersonName() + "', '" + people.getAge() + "', '" + people.getAliveStatus() + "', '" + people.getResucuedLocation() + "', '" + people.getPresentLocation() +"', '" + people.getMobile()+"', '"  + (people.getPersonName()+".jpg")+"', '" + people.getSex()+ "')";
             Statement stmt = con.createStatement();
             stmt.executeUpdate(query);
             closeConnection();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public static int getPID() {
-         getConnected();
-         int PiD = 0;
-         
-         try {
-            query = "select pid from dms.people ORDER BY pid DESC LIMIT 1";
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            if (rs.next()) {
-                 PiD = rs.getInt("pid");
-                 return PiD;
-            } else {
-                return 0;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        closeConnection();
-        return -10;
-        
     }
 
     public static void addReliefCampAndRequirementsDetails(ReliefCampDetails rCamp) {

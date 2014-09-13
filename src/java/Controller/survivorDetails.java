@@ -33,24 +33,7 @@ public class survivorDetails extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-//        try {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet NewServlet</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<form action=\"upload\" method=\"post\" enctype=\"multipart/form-data\">");
-//            out.println("<input type=\"file\" name=\"file\" /><br>");
-//            out.println("<input type=\"submit\" />");
-//            out.println("</form>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        } finally {
-//            out.close();
-//        }
+        
         //---------------------------
         String disaster_name = request.getParameter("disaster_name");
         String survivor_name = request.getParameter("survivor_name");
@@ -63,6 +46,25 @@ public class survivorDetails extends HttpServlet {
         int Age=Integer.parseInt(age);
         PeopleDetails survivedPeople=new PeopleDetails(DisasterId,survivor_name,Age,sex,1,rescued_location,current_location,tel);
         Database.addPeopleDetailsToDB(survivedPeople);
+        
+        PrintWriter out = response.getWriter();
+        try {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<form action=\"upload?picname="+survivor_name+".jpg"+"\" method=\"post\" enctype=\"multipart/form-data\">");
+            out.println("<input type=\"file\" name=\"file\" /><br>");
+            out.println("<input type=\"submit\" />");
+            out.println("</form>");
+            out.println("</body>");
+            out.println("</html>");
+        } finally {
+            out.close();
+        }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

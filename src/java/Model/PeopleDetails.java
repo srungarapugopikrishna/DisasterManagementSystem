@@ -31,12 +31,13 @@ public class PeopleDetails {
           Age=-1;
         AliveStatus=-1;
         RescueLocation
-                =PresentLocation;
-        ContactNumber="";
+                =PresentLocation
+                =image
+                =ContactNumber;
     }
     public PeopleDetails(int Did,String name,int age,String sex,int LifeStatus,String LocationRescued,String LocationAtPresent,String MobileNumber){
         DisasterID=Did;
-        PersonID=Database.getPID();
+        
         PersonName=name;
         Age=age;
         Sex=sex;
@@ -44,11 +45,9 @@ public class PeopleDetails {
         RescueLocation=LocationRescued;
         PresentLocation=LocationAtPresent;
         ContactNumber=MobileNumber;
-        image="E:\\Geekli/img.jpg";
+        
     }
-    public int getPersonID(){
-        return PersonID;
-    }
+    
     public int getDisasterID(){
         return DisasterID;
     }
