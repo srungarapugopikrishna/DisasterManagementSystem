@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/gopi/Documents/NetBeansProjects/Geekli/src/java/Model/DisasterDetails.java</file>
+            <file>file:/C:/Users/gopi/Documents/NetBeansProjects/Geekli/src/java/Controller/DisasterDetailsDB.java</file>
+            <file>file:/C:/Users/gopi/Documents/NetBeansProjects/Geekli/src/java/Controller/survivorDetails.java</file>
+            <file>file:/C:/Users/gopi/Documents/NetBeansProjects/Geekli/src/java/Model/PeopleDetails.java</file>
             <file>file:/C:/Users/gopi/Documents/NetBeansProjects/Geekli/src/java/Controller/Database/Database.java</file>
-            <file>file:/C:/Users/gopi/Documents/NetBeansProjects/Geekli/web/disasterinfo.html</file>
-            <file>file:/C:/Users/gopi/Documents/NetBeansProjects/Geekli/src/java/Controller/DisasterDetailsToDB.java</file>
         </group>
     </open-files>
 </project-private>

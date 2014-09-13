@@ -16,6 +16,10 @@
         <servlet-name>survivorDetails</servlet-name>
         <servlet-class>Controller.survivorDetails</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deadDetails</servlet-name>
+        <servlet-class>Controller.deadDetails</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registration</servlet-name>
         <url-pattern>/registration</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>survivorDetails</servlet-name>
         <url-pattern>/survivorDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deadDetails</servlet-name>
+        <url-pattern>/deadDetails</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

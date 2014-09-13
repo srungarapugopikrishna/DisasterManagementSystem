@@ -6,38 +6,71 @@
 
 package Model;
 
+import Controller.Database.Database;
+import java.sql.Blob;
+
 /**
  *
  * @author gopi
  */
 public class PeopleDetails {
     int DisasterID;
-    int PersonID;
+     int PersonID;
     String PersonName;
-    String DOB;
+    int Age;
+    String Sex;
     int AliveStatus;
     String RescueLocation;
     String PresentLocation;
+    String image;
     String ContactNumber;
     public PeopleDetails(){
-        DisasterID
-                =PersonID;
-        PersonName
-                =DOB;
+        DisasterID=-1;
+            //    =PersonID;
+        PersonName="";
+          Age=-1;
         AliveStatus=-1;
         RescueLocation
                 =PresentLocation;
         ContactNumber="";
     }
-    public PeopleDetails(int Did,int Pid,String name,String bday,int LifeStatus,String LocationRescued,String LocationAtPresent,String MobileNumber){
+    public PeopleDetails(int Did,String name,int age,String sex,int LifeStatus,String LocationRescued,String LocationAtPresent,String MobileNumber){
         DisasterID=Did;
-        PersonID=Pid;
+        PersonID=Database.getPID();
         PersonName=name;
-        DOB=bday;
+        Age=age;
+        Sex=sex;
         AliveStatus=LifeStatus;
         RescueLocation=LocationRescued;
         PresentLocation=LocationAtPresent;
         ContactNumber=MobileNumber;
+        image="E:\\Geekli/img.jpg";
     }
-    
+    public int getPersonID(){
+        return PersonID;
+    }
+    public int getDisasterID(){
+        return DisasterID;
+    }
+    public String getPersonName(){
+        return PersonName;
+    }
+    public int getAge(){
+        return Age;
+    }
+    public String getSex(){
+        return Sex;
+    }
+    public int getAliveStatus(){
+        return AliveStatus;
+    }
+    public String getResucuedLocation(){
+        return RescueLocation;
+    }
+    public String getPresentLocation(){
+        return PresentLocation;
+    }
+    public String getMobile(){
+        return ContactNumber;
+    }
 }

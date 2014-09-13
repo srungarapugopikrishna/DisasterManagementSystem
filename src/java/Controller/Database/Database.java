@@ -6,6 +6,7 @@
 package Controller.Database;
 
 import Model.DisasterDetails;
+import Model.PeopleDetails;
 import Model.VolunteerDetails;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -79,7 +80,7 @@ public class Database {
             ResultSet rs = stmt1.executeQuery(checkRegisteredUsers);
             if (rs.next()) {
                 return false;
-            } else {
+            } else { 
                 query = "INSERT INTO dms.volunteers_info (`volunteers_id`, name , username, password, contact_no,volunteers_Address)"
                         + "VALUES (" + ((vdetails.getVolunteerID() + 1)) + ", '" + vdetails.getVolunteerName() + "', '" + vdetails.getUserNameOfVolunteer() + "', '" + vdetails.getPassword() + "', '" + vdetails.getVolunteerContact() + "', '" + vdetails.getVolunteerAddress() + "')";
                 Statement stmt = con.createStatement();
@@ -194,6 +195,41 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 1;
+    }
+
+    public static void addPeopleDetailsToDB(PeopleDetails people) { 
+        try {
+            getConnected();
+            query = "INSERT INTO dms. people (`pid`,`did`, Name , `age`, `status`, rescued_location,present_location,contact_no,sex)"
+                    + "VALUES (" +people.getPersonID()+ ", "+people.getDisasterID()+ ", '" + people.getPersonName() + "', '" + people.getAge() + "', '" + people.getAliveStatus() + "', '" + people.getResucuedLocation() + "', '" + people.getPresentLocation() +"', '" + people.getMobile()+"', '" + people.getSex()+ "')";
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(query);
+            closeConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static int getPID() {
+         getConnected();
+         int PiD = 0;
+         
+         try {
+            query = "select pid from dms.people ORDER BY pid DESC LIMIT 1";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                 PiD = rs.getInt("pid");
+                 return PiD;
+            } else {
+                return 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        closeConnection();
+        return -10;
+        
     }
 
     public String getVolunteers(int Did) {

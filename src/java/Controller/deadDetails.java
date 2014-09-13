@@ -9,6 +9,7 @@ package Controller;
 import Controller.Database.Database;
 import Model.PeopleDetails;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gopi
  */
-public class survivorDetails extends HttpServlet {
+public class deadDetails extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +34,7 @@ public class survivorDetails extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String disaster_name = request.getParameter("disaster_name");
-        String survivor_name = request.getParameter("dead_Person_name");
+        String dead_Person_name = request.getParameter("dead_Person_name");
         String age = request.getParameter("age");
         String sex = request.getParameter("sex");
         String rescued_location=request.getParameter("rescued_location");
@@ -41,9 +42,10 @@ public class survivorDetails extends HttpServlet {
         String tel = request.getParameter("tel");
         int DisasterId=Database.addDisasterName(disaster_name);
         int Age=Integer.parseInt(age);
-        PeopleDetails survivedPeople=new PeopleDetails(DisasterId,survivor_name,Age,sex,1,rescued_location,current_location,tel);
-        Database.addPeopleDetailsToDB(survivedPeople);
+        PeopleDetails People=new PeopleDetails(DisasterId,dead_Person_name,Age,sex,0,rescued_location,current_location,tel);
+        Database.addPeopleDetailsToDB(People);
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
