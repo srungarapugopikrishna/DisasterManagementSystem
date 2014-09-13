@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package Model;
+
+import static Controller.Database.Database.getVolunteerCurrID;
+
 /**
  *
  * @author gopi
@@ -13,18 +16,18 @@ public class VolunteerDetails {
     String VolunteerName;
     String UserName;
     String Password;
-    int VolunteerContact;
+    String VolunteerContact;
     String Address;
     public VolunteerDetails(){
         VolunteerID=-1;
         VolunteerName
                 =UserName
                 =Password;
-        VolunteerContact=-1;
+        VolunteerContact="111";
     }
-    public VolunteerDetails(int VolID,String VolName,String UName,String pwd,int VolunteerMobile,String addr){
+    public VolunteerDetails(int VolID,String VolName,String UName,String pwd,String VolunteerMobile,String addr){
         
-        VolunteerID=VolID;
+        VolunteerID=getVolunteerCurrID();
         VolunteerName=VolName;
         UserName=UName;
         Password=pwd;
@@ -32,22 +35,22 @@ public class VolunteerDetails {
         Address=addr;
     }
     
-    public int VolunteerID(){
+    public int getVolunteerID(){
         return VolunteerID;
     }
-    public String VolunteerName(){
+    public String getVolunteerName(){
         return VolunteerName;
     }
-    public String UserName(){
+    public String getUserNameOfVolunteer(){
         return UserName;
     }
-    public String Password(){
+    public String getPassword(){
         return Password;
     }
-    public int VolunteerContact(){
+    public String getVolunteerContact(){
         return VolunteerContact;
     }
-    public String Address(){
+    public String getVolunteerAddress(){
         return Address;
     }
 }

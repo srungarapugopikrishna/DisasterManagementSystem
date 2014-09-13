@@ -6,9 +6,12 @@
 
 package Controller.Database;
 
+import Model.VolunteerDetails;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,9 +47,40 @@ public class Database {
 
     public static int getVolunteerCurrID() {
         getConnected();
-        query = "select volunteers_id from dms.registration where UserName='"+username+"'";
+       // System.out.print("getVolunteerCurrID");
+          int VID = -1;
+        try {
+            query = "select volunteers_id from dms.volunteers_info ORDER BY volunteers_id DESC LIMIT 1";
+            Statement stmt  = con.createStatement();
+            ResultSet rs=stmt.executeQuery(query);
+            if(rs.next()){
+                
+                while(rs.next()){
+                    VID=rs.getInt("Volunteers_id");
+                }
+            }else{
+            return 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
         closeConnection();
-        return 0;
+        return VID;
+    }
+
+    public static void addVolunteerRegistration(VolunteerDetails vdetails) {
+        try {
+            getConnected();
+              query = "INSERT INTO dms.volunteers_info (`volunteers_id`, name , username, password, contact_no,volunteers_Address)"
+                    + "VALUES (" + ((vdetails.getVolunteerID() + 1)) + ", '" + vdetails.getVolunteerName()+ "', '" + vdetails.getUserNameOfVolunteer()+ "', '" + vdetails.getPassword()+ "', '" + vdetails.getVolunteerContact()+"', '" + vdetails.getVolunteerAddress()+ "')";
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(query);
+            
+            closeConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public String getDisasterType(int Did){
         getConnected();
@@ -132,10 +166,10 @@ public class Database {
         return null;
     }
 
-    public int getCampontactAddress(int Campid) {
+    public String getCampContact(int Campid) {
         getConnected();
         //MyCodeHere
         closeConnection();
-        return -1;
+        return null;
     }
 }

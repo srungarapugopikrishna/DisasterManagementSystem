@@ -14,17 +14,17 @@ public class ReliefCampDetails {
     int DisasterID;
     int CampID;
     String Address;
-    int Contact;
+    String Contact;
     public ReliefCampDetails(){
         DisasterID
                 =CampID;
         Address="";
-        Contact=-1;
+        Contact="";
     }
     public ReliefCampDetails(int Campid){
         CampID=Campid;
         Controller.Database.Database ConDB=new Controller.Database.Database();
         Address=ConDB.getCampAddress(Campid);
-        Contact=ConDB.getCampontactAddress(Campid);
+        Contact=ConDB.getCampContact(Campid);
     }
 }

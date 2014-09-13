@@ -35,14 +35,16 @@ public class registration extends HttpServlet {
        System.out.println("In Registration");
         String username = request.getParameter("name");
         String address = request.getParameter("addr");
-        String phnum = request.getParameter("phnum");
+        String phnum = request.getParameter("phno");
         String VolunteerID = request.getParameter("id");
         String password = request.getParameter("pwd");
         System.out.println("---->"+username);
-        int mobile=Integer.parseInt(phnum);
+         
         int VolID=Database.getVolunteerCurrID();
+        System.out.println("VolunteerId----"+VolID);
 //         ,String VolName,String UName,String pwd,int VolunteerMobile
-        VolunteerDetails vdetails=new VolunteerDetails(VolID,username,VolunteerID,password,mobile,address);
+        VolunteerDetails vdetails=new VolunteerDetails(VolID,username,VolunteerID,password,phnum,address);
+        Database.addVolunteerRegistration(vdetails);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

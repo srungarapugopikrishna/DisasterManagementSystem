@@ -18,7 +18,7 @@ public class PeopleDetails {
     int AliveStatus;
     String RescueLocation;
     String PresentLocation;
-    int ContactNumber;
+    String ContactNumber;
     public PeopleDetails(){
         DisasterID
                 =PersonID;
@@ -27,9 +27,9 @@ public class PeopleDetails {
         AliveStatus=-1;
         RescueLocation
                 =PresentLocation;
-        ContactNumber=-1;
+        ContactNumber="";
     }
-    public PeopleDetails(int Did,int Pid,String name,String bday,int LifeStatus,String LocationRescued,String LocationAtPresent,int MobileNumber){
+    public PeopleDetails(int Did,int Pid,String name,String bday,int LifeStatus,String LocationRescued,String LocationAtPresent,String MobileNumber){
         DisasterID=Did;
         PersonID=Pid;
         PersonName=name;
