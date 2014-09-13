@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
+    <title>Disaster management system</title>
+    <!-- Bootstrap -->
+    
+	  <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Sintony:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+		<header class="clearfix">
+		    <div class="logo col-md-3"><h2 class="logo-text">Disaster Management system</h2></div>
+		    <nav class="clearfix">
+            <ul class="clearfix">
+                <li><a href="diasterinfo.html" class="active"> Add disaster</a></li>
+                <li><a href="damage.html">Damage details</a></li>
+                <li><a href="requirement.html">Requirement details add</a></li>
+                <li><a href="Approve.html">Approve Volunteer</a></li>
+            </ul>
+        </nav>
+        </header>
+	
+	</head>
+  <body>
+
+   <h1 align="center">  Dead details </h1>
+
+        <form id="survivor info" name="details" method="post" action="dead_details">
+            <div align="center">
+			
+                <table width="564" border="0" align="center" cellpadding="5" cellspacing="5">
+                    <tr><br>
+                        <td width="163"><div align="right"> Name :</div></td>
+                        <td width="391"><div align="left">
+                                <input type="text" name="dead_name" id="textfield">
+                            </div></td>
+                    </tr>
+                    <tr>
+                        <td><div align="right">age :</div></td>
+                        <td><div align="left">
+
+                                <input type="text" name="dead_age" id="age"><br />
+                            </div></td>
+                    </tr>
+                    <tr>
+                        <td><div align="right">Sex </div></td>
+                        <td><div align="left">
+                                <input type="text" name="dead_sex" id="sex"><br />
+                            </div></td>
+                    </tr>
+                    <tr>
+                        <td><div align="right">address</div></td>
+                        <td><div align="left">
+
+                                <input type="text" name="dead_address" id="address">
+                            </div></td>
+                    </tr> <tr>
+                        <td><div align="right">Relaive details</div></td>
+                        <td><div align="left">
+                                <input type="text" name="details" id="tel">
+                            </div></td>
+                    </tr>
+					
+                        <td colspan="2"><div align="center">
+                                <input type="submit" name="submit" id="submit" value="Submit">
+                            </div>
+                            <div align="left"></div></td>
+                    
+					
+                    </tr>
+					 
+                </table>
+				
+</form>
+</body>
+</html>
+	

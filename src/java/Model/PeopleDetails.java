@@ -39,4 +39,5 @@ public class PeopleDetails {
         PresentLocation=LocationAtPresent;
         ContactNumber=MobileNumber;
     }
+    
 }

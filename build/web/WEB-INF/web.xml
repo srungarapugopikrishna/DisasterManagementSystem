@@ -9,8 +9,12 @@
         <servlet-class>Controller.volunteerLogin</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DisasterDetails</servlet-name>
-        <servlet-class>Controller.DisasterDetailsToDB</servlet-class>
+        <servlet-name>DisasterDetailsDB</servlet-name>
+        <servlet-class>Controller.DisasterDetailsDB</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>survivorDetails</servlet-name>
+        <servlet-class>Controller.survivorDetails</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>registration</servlet-name>
@@ -21,8 +25,12 @@
         <url-pattern>/volunteerLogin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DisasterDetails</servlet-name>
-        <url-pattern>/DisasterDetails</url-pattern>
+        <servlet-name>DisasterDetailsDB</servlet-name>
+        <url-pattern>/DisasterDetailsDB</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>survivorDetails</servlet-name>
+        <url-pattern>/survivorDetails</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

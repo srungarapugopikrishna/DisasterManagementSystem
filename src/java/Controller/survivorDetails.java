@@ -7,8 +7,8 @@
 package Controller;
 
 import Controller.Database.Database;
-import Model.DisasterDetails;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gopi
  */
-public class DisasterDetailsToDB extends HttpServlet {
-
-     
+public class survivorDetails extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,15 +32,14 @@ public class DisasterDetailsToDB extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        System.out.println("In DisasterDetails");
-        String disasterName = request.getParameter("DisasterName");
-        String disasterType = request.getParameter("Disaster_type");
-        String locationName = request.getParameter("LocationName");
-        String total_death = request.getParameter("total_death");
-        String property_Lost = request.getParameter("Property_Lost");
-        int DisasterId=Database.addDisaster(disasterName);
-        DisasterDetails Ddetails=new DisasterDetails(DisasterId,disasterName,disasterType,locationName,total_death,property_Lost);
-
+        String disaster_name = request.getParameter("disaster_name");
+        String survivor_name = request.getParameter("survivor_name");
+        String age = request.getParameter("age");
+        String sex = request.getParameter("sex");
+        String rescued_location=request.getParameter("rescued_location");
+        String current_location = request.getParameter("current_location");
+        String tel = request.getParameter("tel");
+        int DisasterId=Database.addDisasterName(disaster_name);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -82,4 +79,5 @@ public class DisasterDetailsToDB extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }
