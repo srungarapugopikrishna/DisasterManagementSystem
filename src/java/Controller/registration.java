@@ -9,6 +9,7 @@ package Controller;
 import Controller.Database.Database;
 import Model.VolunteerDetails;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,13 +39,18 @@ public class registration extends HttpServlet {
         String phnum = request.getParameter("phno");
         String VolunteerID = request.getParameter("id");
         String password = request.getParameter("pwd");
-        System.out.println("---->"+username);
-         
-        int VolID=Database.getVolunteerCurrID();
-        System.out.println("VolunteerId----"+VolID);
-//         ,String VolName,String UName,String pwd,int VolunteerMobile
-        VolunteerDetails vdetails=new VolunteerDetails(VolID,username,VolunteerID,password,phnum,address);
-        Database.addVolunteerRegistration(vdetails);
+         int VolID=Database.getVolunteerCurrID();
+         VolunteerDetails vdetails=new VolunteerDetails(VolID,username,VolunteerID,password,phnum,address);
+        RequestDispatcher rd = null;
+          boolean RegistrationSucessfull=Database.addVolunteerRegistration(vdetails);
+          if(RegistrationSucessfull){
+           rd = request.getRequestDispatcher("index.html");
+           }
+          else{
+              rd=request.getRequestDispatcher("UnSucessfullRegistration.html");
+           }
+          if(rd!=null)
+            rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -36,22 +36,15 @@ public class volunteerLogin extends HttpServlet {
         String username = request.getParameter("username");
         String pwd = request.getParameter("pwd");
         RequestDispatcher rd = null;
-       //   System.out.println("UserName-"+username+"    passs--"+pwd);
-         boolean loginsucessfull=Database.checkLogin(username, pwd);
+          boolean loginsucessfull=Database.checkLogin(username, pwd);
           if(loginsucessfull){
-       //   System.out.println("Login Successfull");
-          rd = request.getRequestDispatcher("index.html");
-        //  rd = request.getRequestDispatcher("ReadCookies");
-          
-          }
+           rd = request.getRequestDispatcher("index.html");
+           }
           else{
               rd=request.getRequestDispatcher("a.html");
-              //out.print("Name   ");
-          }
+           }
           if(rd!=null)
             rd.forward(request, response);
-        
-         
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

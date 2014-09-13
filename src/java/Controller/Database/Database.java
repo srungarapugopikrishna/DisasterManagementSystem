@@ -69,18 +69,26 @@ public class Database {
         return VID;
     }
 
-    public static void addVolunteerRegistration(VolunteerDetails vdetails) {
+    public static boolean addVolunteerRegistration(VolunteerDetails vdetails) {
         try {
             getConnected();
-            query = "INSERT INTO dms.volunteers_info (`volunteers_id`, name , username, password, contact_no,volunteers_Address)"
-                    + "VALUES (" + ((vdetails.getVolunteerID() + 1)) + ", '" + vdetails.getVolunteerName() + "', '" + vdetails.getUserNameOfVolunteer() + "', '" + vdetails.getPassword() + "', '" + vdetails.getVolunteerContact() + "', '" + vdetails.getVolunteerAddress() + "')";
-            Statement stmt = con.createStatement();
-            stmt.executeUpdate(query);
-
+            
+            String checkRegisteredUsers = "select volunteers_id from dms.volunteers_info where username='" + vdetails.getUserNameOfVolunteer() + "'";
+            Statement stmt1 = con.createStatement();
+            ResultSet rs = stmt1.executeQuery(checkRegisteredUsers);
+            if (rs.next()) {
+                 return false;
+            } else{
+                query = "INSERT INTO dms.volunteers_info (`volunteers_id`, name , username, password, contact_no,volunteers_Address)"
+                        + "VALUES (" + ((vdetails.getVolunteerID() + 1)) + ", '" + vdetails.getVolunteerName() + "', '" + vdetails.getUserNameOfVolunteer() + "', '" + vdetails.getPassword() + "', '" + vdetails.getVolunteerContact() + "', '" + vdetails.getVolunteerAddress() + "')";
+                Statement stmt = con.createStatement();
+                stmt.executeUpdate(query);
+                }
             closeConnection();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return true;
     }
 
     public static boolean checkLogin(String username, String pwd) {
@@ -99,9 +107,9 @@ public class Database {
                 rs = stmt.executeQuery(query);
                 rs.next();
                 String dbpassword = rs.getString(1);
-                 System.out.println("dbpassword---"+dbpassword+"--Pwd---"+pwd);
+               // System.out.println("dbpassword---"+dbpassword+"--Pwd---"+pwd);
                 if (dbpassword.equals(pwd)) {
-                    System.out.println("SuccessFull");
+                  //  System.out.println("SuccessFull");
                     closeConnection();
                     return true;
                 } else {
