@@ -26,12 +26,12 @@ public class DisasterDetails {
                 =DisasterDeaths
                 =DisasterPropertyLoss;
     }
-    public DisasterDetails(int Did){
+    public DisasterDetails(int Did,String DisName,String DisType,String DisLoc,String DisDeaths,String DisPropertyLoss){
          DisasterID=Did;
-         Controller.Database.Database ConDB=new Controller.Database.Database();
-         DisasterType = ConDB.getDisasterType(Did);
-         DisasterLocation=ConDB.getDisasterLocation(Did);
-         DisasterDeaths=ConDB.getDisasterDeaths();
-         DisasterPropertyLoss=ConDB.getDisasterPropertyLoss();
+         DisasterName=DisName;
+         DisasterType =  DisType;
+         DisasterLocation=DisLoc;
+         DisasterDeaths=DisDeaths;
+         DisasterPropertyLoss=DisPropertyLoss;
     }
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Controller;
 
 import Controller.Database.Database;
@@ -33,24 +32,25 @@ public class registration extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       System.out.println("In Registration");
+        System.out.println("In Registration");
         String username = request.getParameter("name");
         String address = request.getParameter("addr");
         String phnum = request.getParameter("phno");
         String VolunteerID = request.getParameter("id");
         String password = request.getParameter("pwd");
-         int VolID=Database.getVolunteerCurrID();
-         VolunteerDetails vdetails=new VolunteerDetails(VolID,username,VolunteerID,password,phnum,address);
+        int VolID = Database.getVolunteerCurrID();
+        VolunteerDetails vdetails = new VolunteerDetails(VolID, username, VolunteerID, password, phnum, address);
         RequestDispatcher rd = null;
-          boolean RegistrationSucessfull=Database.addVolunteerRegistration(vdetails);
-          if(RegistrationSucessfull){
-           rd = request.getRequestDispatcher("index.html");
-           }
-          else{
-              rd=request.getRequestDispatcher("UnSucessfullRegistration.html");
-           }
-          if(rd!=null)
+        boolean RegistrationSucessfull;
+        RegistrationSucessfull = Database.addVolunteerRegistration(vdetails);
+        if (RegistrationSucessfull) {
+            rd = request.getRequestDispatcher("index.html");
+        } else {
+            rd = request.getRequestDispatcher("UnSucessfullRegistration.html");
+        }
+        if (rd != null) {
             rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

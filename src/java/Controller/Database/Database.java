@@ -72,18 +72,18 @@ public class Database {
     public static boolean addVolunteerRegistration(VolunteerDetails vdetails) {
         try {
             getConnected();
-            
+
             String checkRegisteredUsers = "select volunteers_id from dms.volunteers_info where username='" + vdetails.getUserNameOfVolunteer() + "'";
             Statement stmt1 = con.createStatement();
             ResultSet rs = stmt1.executeQuery(checkRegisteredUsers);
             if (rs.next()) {
-                 return false;
-            } else{
+                return false;
+            } else {
                 query = "INSERT INTO dms.volunteers_info (`volunteers_id`, name , username, password, contact_no,volunteers_Address)"
                         + "VALUES (" + ((vdetails.getVolunteerID() + 1)) + ", '" + vdetails.getVolunteerName() + "', '" + vdetails.getUserNameOfVolunteer() + "', '" + vdetails.getPassword() + "', '" + vdetails.getVolunteerContact() + "', '" + vdetails.getVolunteerAddress() + "')";
                 Statement stmt = con.createStatement();
                 stmt.executeUpdate(query);
-                }
+            }
             closeConnection();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -93,7 +93,7 @@ public class Database {
 
     public static boolean checkLogin(String username, String pwd) {
 
-        System.out.println("In CheckLogin");
+        // System.out.println("In CheckLogin");
         getConnected();
         String volunteers_id;
         try {
@@ -101,15 +101,15 @@ public class Database {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()) {
-               
+
                 volunteers_id = rs.getString(1);
                 query = "select password from dms.volunteers_info where volunteers_id='" + volunteers_id + "'";
                 rs = stmt.executeQuery(query);
                 rs.next();
                 String dbpassword = rs.getString(1);
-               // System.out.println("dbpassword---"+dbpassword+"--Pwd---"+pwd);
+                // System.out.println("dbpassword---"+dbpassword+"--Pwd---"+pwd);
                 if (dbpassword.equals(pwd)) {
-                  //  System.out.println("SuccessFull");
+                    //  System.out.println("SuccessFull");
                     closeConnection();
                     return true;
                 } else {
@@ -126,33 +126,37 @@ public class Database {
 
     }
 
-    public String getDisasterType(int Did) {
-        getConnected();
-        //MyCodeHere
-        closeConnection();
-        return null;
+    public static int addDisaster(String disasterName) {
+        try {
+            getConnected();
+            String disasterId;
+            query = "select did from dms.disasters ORDER BY did DESC LIMIT 1";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                disasterId = rs.getString(1);
+                String query1 = "INSERT INTO dms.disasters (`did`,disaster_name)"
+                        + "VALUES (" + ((Integer.parseInt(disasterId) + 1)) + ", '" + disasterName + "')";
+                Statement stmt1 = con.createStatement();
+                stmt1.executeUpdate(query1);
+
+            } else {
+                String query1 = "INSERT INTO dms.disasters (`did`,disaster_name)"
+                        + "VALUES (" + ((1)) + ", '" + disasterName + "')";
+                Statement stmt1 = con.createStatement();
+                stmt1.executeUpdate(query1);
+            }
+            closeConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
 
-    public String getDisasterLocation(int Did) {
-        getConnected();
-        //MyCodeHere
-        closeConnection();
-        return null;
-    }
+    
 
-    public String getDisasterDeaths() {
-        getConnected();
-        //MyCodeHere
-        closeConnection();
-        return null;
-    }
-
-    public String getDisasterPropertyLoss() {
-        getConnected();
-        //MyCodeHere
-        closeConnection();
-        return null;
-    }
+    
+ 
 
     public String getVolunteers(int Did) {
         getConnected();

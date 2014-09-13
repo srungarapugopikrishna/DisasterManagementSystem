@@ -8,6 +8,10 @@
         <servlet-name>volunteerLogin</servlet-name>
         <servlet-class>Controller.volunteerLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DisasterDetails</servlet-name>
+        <servlet-class>Controller.DisasterDetailsToDB</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registration</servlet-name>
         <url-pattern>/registration</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>volunteerLogin</servlet-name>
         <url-pattern>/volunteerLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisasterDetails</servlet-name>
+        <url-pattern>/DisasterDetails</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

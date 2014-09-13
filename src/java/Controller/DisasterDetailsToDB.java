@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Controller;
 
 import Controller.Database.Database;
+import Model.DisasterDetails;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gopi
  */
-public class volunteerLogin extends HttpServlet {
+public class DisasterDetailsToDB extends HttpServlet {
+
+     
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,21 +34,16 @@ public class volunteerLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //  System.out.println("-*-*-*-In VolunteerLogin-*-*-*-");
-        String username = request.getParameter("username");
-        String pwd = request.getParameter("pwd");
-        RequestDispatcher rd = null;
-        boolean loginsucessfull = Database.checkLogin(username, pwd);
-        if (loginsucessfull) {
-            rd = request.getRequestDispatcher("index.html");
-        } else {
-            rd = request.getRequestDispatcher("a.html");
-        }
-        if (rd != null) {
-            rd.forward(request, response);
-        }
-    }
+        System.out.println("In DisasterDetails");
+        String disasterName = request.getParameter("DisasterName");
+        String disasterType = request.getParameter("Disaster_type");
+        String locationName = request.getParameter("LocationName");
+        String total_death = request.getParameter("total_death");
+        String property_Lost = request.getParameter("Property_Lost");
+        int DisasterId=Database.addDisaster(disasterName);
+        DisasterDetails Ddetails=new DisasterDetails(DisasterId,disasterName,disasterType,locationName,total_death,property_Lost);
 
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
