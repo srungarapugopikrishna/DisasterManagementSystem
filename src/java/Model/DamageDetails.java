@@ -23,8 +23,8 @@ public class DamageDetails {
     public DamageDetails(int Did){
         DisasterID=Did;
         Controller.Database.Database ConDB=new Controller.Database.Database();
-        Deaths=ConDB.getDeaths(Did);
-        PropertyLoss=ConDB.getPropertyLoss(Did);
-        PeopleInjured=ConDB.getPeopleInjured(Did);
+//        Deaths=ConDB.getDeaths(Did);
+//        PropertyLoss=ConDB.getPropertyLoss(Did);
+//        PeopleInjured=ConDB.getPeopleInjured(Did);
     }
 }

@@ -7,6 +7,7 @@ package Controller.Database;
 
 import Model.DisasterDetails;
 import Model.PeopleDetails;
+import Model.ReliefCampDetails;
 import Model.VolunteerDetails;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -131,24 +132,34 @@ public class Database {
     public static int addDisasterName(String disasterName) {
         try {
             getConnected();
-            String disasterId;
-            query = "select did from dms.disasters ORDER BY did DESC LIMIT 1";
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            if (rs.next()) {
-                disasterId = rs.getString(1);
-                String query1 = "INSERT INTO dms.disasters (`did`,disaster_name)"
-                        + "VALUES (" + ((Integer.parseInt(disasterId) + 1)) + ", '" + disasterName + "')";
-                Statement stmt1 = con.createStatement();
-                stmt1.executeUpdate(query1);
-                return (Integer.parseInt(disasterId) + 1);
-
-            } else {
-                String query1 = "INSERT INTO dms.disasters (`did`,disaster_name)"
-                        + "VALUES (" + ((1)) + ", '" + disasterName + "')";
-                Statement stmt1 = con.createStatement();
-                stmt1.executeUpdate(query1);
+            String disaster_Id;
+            String query2 = "select did from dms.disaster where disaster_name="+disasterName;
+            Statement stmt2 = con.createStatement();
+            ResultSet rs1 = stmt2.executeQuery(query2);
+            if(rs1.next()){
+                disaster_Id = rs1.getString(1);
+                return Integer.parseInt(disaster_Id);
             }
+            else{
+                String disasterId;
+                query = "select did from dms.disasters ORDER BY did DESC LIMIT 1";
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                if (rs.next()) {
+                    disasterId = rs.getString(1);
+                    String query1 = "INSERT INTO dms.disasters (`did`,disaster_name)"
+                            + "VALUES (" + ((Integer.parseInt(disasterId) + 1)) + ", '" + disasterName + "')";
+                    Statement stmt1 = con.createStatement();
+                    stmt1.executeUpdate(query1);
+                    return (Integer.parseInt(disasterId) + 1);
+
+                } else {
+                    String query1 = "INSERT INTO dms.disasters (`did`,disaster_name)"
+                            + "VALUES (" + ((1)) + ", '" + disasterName + "')";
+                    Statement stmt1 = con.createStatement();
+                    stmt1.executeUpdate(query1);
+                }
+        }
             closeConnection();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -169,26 +180,60 @@ public class Database {
         }
     }
 
+//    public static int addDisasterType(String disasterType) {
+//        try {
+//            getConnected();
+//            String disaster_Type_Id;
+//            query = "select type_id from dms.disaster_types ORDER BY type_id DESC LIMIT 1";
+//            Statement stmt = con.createStatement();
+//            ResultSet rs = stmt.executeQuery(query);
+//            if (rs.next()) {
+//                disaster_Type_Id = rs.getString(1);
+//                String query1 = "INSERT INTO dms.disaster_types (`type_id`,disaster_type)"
+//                        + "VALUES (" + ((Integer.parseInt(disaster_Type_Id) + 1)) + ", '" + disasterType + "')";
+//                Statement stmt1 = con.createStatement();
+//                stmt1.executeUpdate(query1);
+//                return (Integer.parseInt(disaster_Type_Id) + 1);
+//
+//            } else {
+//                String query1 = "INSERT INTO dms.disaster_types (`type_id`,disaster_type)"
+//                        + "VALUES (" + ((1)) + ", '" + disasterType + "')";
+//                Statement stmt1 = con.createStatement();
+//                stmt1.executeUpdate(query1);
+//            }
+//            closeConnection();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return 1;
+//    }
     public static int addDisasterType(String disasterType) {
         try {
             getConnected();
             String disaster_Type_Id;
-            query = "select type_id from dms.disaster_types ORDER BY type_id DESC LIMIT 1";
+            query = "select type_id from dms.disaster_types where disaster_type="+disasterType;
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()) {
-                disaster_Type_Id = rs.getString(1);
-                String query1 = "INSERT INTO dms.disaster_types (`type_id`,disaster_type)"
-                        + "VALUES (" + ((Integer.parseInt(disaster_Type_Id) + 1)) + ", '" + disasterType + "')";
-                Statement stmt1 = con.createStatement();
-                stmt1.executeUpdate(query1);
-                return (Integer.parseInt(disaster_Type_Id) + 1);
-
             } else {
-                String query1 = "INSERT INTO dms.disaster_types (`type_id`,disaster_type)"
-                        + "VALUES (" + ((1)) + ", '" + disasterType + "')";
-                Statement stmt1 = con.createStatement();
-                stmt1.executeUpdate(query1);
+                   String query2 = "select type_id from dms.disaster_types ORDER BY type_id DESC LIMIT 1";
+                   Statement stmt2 = con.createStatement();
+                   ResultSet rs1 = stmt2.executeQuery(query2);
+                   if (rs1.next()) {
+                       disaster_Type_Id = rs.getString(1);
+                       String query1 = "INSERT INTO dms.disaster_types (`type_id`,disaster_type)"
+                               + "VALUES (" + ((Integer.parseInt(disaster_Type_Id) + 1)) + ", '" + disasterType + "')";
+                       Statement stmt1 = con.createStatement();
+                       stmt1.executeUpdate(query1);
+                       return (Integer.parseInt(disaster_Type_Id) + 1);
+
+                   } else {
+                       String query1 = "INSERT INTO dms.disaster_types (`type_id`,disaster_type)"
+                               + "VALUES (" + ((1)) + ", '" + disasterType + "')";
+                       Statement stmt1 = con.createStatement();
+                       stmt1.executeUpdate(query1);
+                       return 1;
+                   }
             }
             closeConnection();
         } catch (SQLException ex) {
@@ -196,7 +241,6 @@ public class Database {
         }
         return 1;
     }
-
     public static void addPeopleDetailsToDB(PeopleDetails people) { 
         try {
             getConnected();
@@ -232,66 +276,16 @@ public class Database {
         
     }
 
-    public String getVolunteers(int Did) {
-        getConnected();
-        //MyCodeHere
-        closeConnection();
-        return null;
-    }
-
-    public String getFood(int Did) {
-        getConnected();
-        //MyCodeHere
-        closeConnection();
-        return null;
-    }
-
-    public String getMedical(int Did) {
-        getConnected();
-        //MyCodeHere
-        closeConnection();
-        return null;
-    }
-
-    public String getReliefCampDetails(int Did) {
-        getConnected();
-        //MyCodeHere
-        closeConnection();
-        return null;
-    }
-
-    public int getDeaths(int Did) {
-        getConnected();
-        //MyCodeHere
-        closeConnection();
-        return -1;
-    }
-
-    public int getPropertyLoss(int Did) {
-        getConnected();
-        //MyCodeHere
-        closeConnection();
-        return -1;
-    }
-
-    public int getPeopleInjured(int Did) {
-        getConnected();
-        //MyCodeHere
-        closeConnection();
-        return -1;
-    }
-
-    public String getCampAddress(int Campid) {
-        getConnected();
-        //MyCodeHere
-        closeConnection();
-        return null;
-    }
-
-    public String getCampContact(int Campid) {
-        getConnected();
-        //MyCodeHere
-        closeConnection();
-        return null;
+    public static void addReliefCampAndRequirementsDetails(ReliefCampDetails rCamp) {
+        try {
+            getConnected();
+            query = "INSERT INTO dms. reliefcampandrequirementdetails (`did`, camp_id , Address, Phone_no, FoodPacks,MedicalKits,VolunteersRequired)"
++ "VALUES (" +rCamp.getDisasterID()+ ", "+rCamp.getCampID()+ ", '" + rCamp.getAddress() + "', '" + rCamp.getContact() + "', '" + rCamp.getFoodPacks() + "', '" + rCamp.getMedicalDetails() + "', '" + rCamp.getNoOfVolunteers() + "')";
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(query);
+            closeConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

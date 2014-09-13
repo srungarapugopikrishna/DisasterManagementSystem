@@ -12,23 +12,35 @@ package Model;
  */
 public class ReliefCampDetails {
     int DisasterID;
-    int CampID;
+    String CampID;
     String Address;
     String Contact;
+    int FoodPacks;
+    int MedicalKits;
+    int volunteers_required;
     public ReliefCampDetails(){
-        DisasterID
-                =CampID;
-        Address="";
-        Contact="";
+        DisasterID=-1;
+            CampID="";
+        Address
+            =Contact;
+        FoodPacks
+                =MedicalKits
+                =volunteers_required;
     }
-    public ReliefCampDetails(int Did,int Campid,String addr,String ph){
+    public ReliefCampDetails(int Did,String Campid,String addr,String ph,int fudpcks,int medkits,int noofvolunteers){
         DisasterID=Did;
         CampID=Campid;
         Address=addr;
         Contact=ph;
+        FoodPacks=fudpcks;
+        MedicalKits=medkits;
+        volunteers_required=noofvolunteers;
     }
     public int getDisasterID()  {return DisasterID;}
-    public int getCampID()      {return CampID;}
+    public String getCampID()      {return CampID;}
     public String getAddress()  {return Address;}
     public String getContact()  {return Contact;}
+    public int getFoodPacks()   {return FoodPacks;}
+    public int getMedicalDetails() {return MedicalKits;}
+    public int getNoOfVolunteers(){return volunteers_required;}
 }

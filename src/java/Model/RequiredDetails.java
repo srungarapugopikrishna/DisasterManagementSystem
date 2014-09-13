@@ -32,5 +32,5 @@ public class RequiredDetails {
     public int getDisasterID()  {return DisasterID;}
     public int getVolunteers()  {return Volunteers;}
     public int getFood()        {return Food;}
-    public int getMedical()        {return Medical;}
+    public int getMedical()       {return Medical;}
 }

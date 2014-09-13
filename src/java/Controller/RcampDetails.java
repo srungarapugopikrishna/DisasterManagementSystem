@@ -7,7 +7,7 @@
 package Controller;
 
 import Controller.Database.Database;
-import Model.DisasterDetails;
+import Model.ReliefCampDetails;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gopi
  */
-public class DisasterDetailsDB extends HttpServlet {
+public class RcampDetails extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,17 +32,19 @@ public class DisasterDetailsDB extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        System.out.println("In DisasterDetailsDB");
-        String disasterName = request.getParameter("DisasterName");
-        String disasterType = request.getParameter("Disaster_type");
-        String locationName = request.getParameter("LocationName");
-        String total_death = request.getParameter("total_death");
-        String total_injured=request.getParameter("total_injured");
-        String property_Lost = request.getParameter("Property_Lost");
-        System.out.println("---Here------");
-        int DisasterId=Database.addDisasterName(disasterName);
-        DisasterDetails Ddetails=new DisasterDetails(DisasterId,disasterName,disasterType,locationName,total_death,property_Lost,total_injured);
-        Database.addDisasterDetailsToDB(Ddetails);
+         String disaster_name = request.getParameter("disaster_Name");
+         String Campid=request.getParameter("relief_Camp_ID");
+          String relief_Ph = request.getParameter("relief_Ph");
+        String relief_add = request.getParameter("relief_addrs");
+       String VolunteersNeeded = request.getParameter("volunteers_Req");
+       String FudPacks = request.getParameter("total_foodpacks_Required");
+       String MediaKits = request.getParameter("medicalKits_required");
+        int DisasterId=Database.addDisasterName(disaster_name);
+        int  noOfFudPacks=Integer.parseInt(FudPacks);
+        int noOfMedicalKits=Integer.parseInt(MediaKits);
+        int noOfVolunteers=Integer.parseInt(VolunteersNeeded);
+        ReliefCampDetails rCamp=new ReliefCampDetails(DisasterId,Campid,relief_add,relief_Ph,noOfFudPacks,noOfMedicalKits,noOfVolunteers);  
+        Database.addReliefCampAndRequirementsDetails(rCamp);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

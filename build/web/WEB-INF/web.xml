@@ -20,6 +20,10 @@
         <servlet-name>deadDetails</servlet-name>
         <servlet-class>Controller.deadDetails</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RcampDetails</servlet-name>
+        <servlet-class>Controller.RcampDetails</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registration</servlet-name>
         <url-pattern>/registration</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>deadDetails</servlet-name>
         <url-pattern>/deadDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RcampDetails</servlet-name>
+        <url-pattern>/RcampDetails</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
