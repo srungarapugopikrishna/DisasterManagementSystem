@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package Controller;
+package MobileController;
 
 import Controller.Database.Database;
-import Model.PeopleDetails;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Vector;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gopi
  */
-public class survivorDetails extends HttpServlet {
+public class DisplayAllDisasters extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,37 +33,15 @@ public class survivorDetails extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-//        try {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet NewServlet</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<form action=\"upload\" method=\"post\" enctype=\"multipart/form-data\">");
-//            out.println("<input type=\"file\" name=\"file\" /><br>");
-//            out.println("<input type=\"submit\" />");
-//            out.println("</form>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        } finally {
-//            out.close();
-//        }
-        //---------------------------
-        String disaster_name = request.getParameter("disaster_name");
-        String survivor_name = request.getParameter("survivor_name");
-        String age = request.getParameter("age");
-        String sex = request.getParameter("sex");
-        String rescued_location=request.getParameter("rescued_location");
-        String current_location = request.getParameter("current_location");
-        String tel = request.getParameter("tel");
-        int DisasterId=Database.addDisasterName(disaster_name);
-        int Age=Integer.parseInt(age);
-        PeopleDetails survivedPeople=new PeopleDetails(DisasterId,survivor_name,Age,sex,1,rescued_location,current_location,tel);
-        Database.addPeopleDetailsToDB(survivedPeople);
+        try (PrintWriter out = response.getWriter()) {
+             Vector v=Database.getAllDisasters();
+             for(int i=0;i<v.size();i++){
+                 out.println(v.get(i)+":");
+             }
+         out.close();
+        }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

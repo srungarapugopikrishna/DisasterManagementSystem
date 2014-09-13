@@ -14,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -133,7 +134,7 @@ public class Database {
         try {
             getConnected();
             String disaster_Id;
-            String query2 = "select did from dms.disaster where disaster_name="+disasterName;
+            String query2 = "select did from dms.disasters where disaster_name='"+disasterName+"'";
             Statement stmt2 = con.createStatement();
             ResultSet rs1 = stmt2.executeQuery(query2);
             if(rs1.next()){
@@ -244,8 +245,8 @@ public class Database {
     public static void addPeopleDetailsToDB(PeopleDetails people) { 
         try {
             getConnected();
-            query = "INSERT INTO dms. people (`pid`,`did`, Name , `age`, `status`, rescued_location,present_location,contact_no,sex)"
-                    + "VALUES (" +people.getPersonID()+ ", "+people.getDisasterID()+ ", '" + people.getPersonName() + "', '" + people.getAge() + "', '" + people.getAliveStatus() + "', '" + people.getResucuedLocation() + "', '" + people.getPresentLocation() +"', '" + people.getMobile()+"', '" + people.getSex()+ "')";
+            query = "INSERT INTO dms. people (`pid`,`did`, Name , `age`, `status`, rescued_location,present_location,contact_no,image,sex)"
+                    + "VALUES (" +people.getPersonID()+ ", "+people.getDisasterID()+ ", '" + people.getPersonName() + "', '" + people.getAge() + "', '" + people.getAliveStatus() + "', '" + people.getResucuedLocation() + "', '" + people.getPresentLocation() +"', '" + people.getMobile()+"', '"  + (people.getPersonID()+".jpg")+"', '" + people.getSex()+ "')";
             Statement stmt = con.createStatement();
             stmt.executeUpdate(query);
             closeConnection();
@@ -287,5 +288,24 @@ public class Database {
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public static Vector getAllDisasters() {
+        Vector v=new Vector();
+        try {
+            getConnected();
+            query = "select disaster_name from dms.disasters;";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            while (rs.next()) {
+                v.add(rs.getString(1));
+            }
+            closeConnection();
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return v;
     }
 }

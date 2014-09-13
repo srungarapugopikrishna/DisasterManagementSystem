@@ -24,6 +24,10 @@
         <servlet-name>RcampDetails</servlet-name>
         <servlet-class>Controller.RcampDetails</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DisplayAllDisasters</servlet-name>
+        <servlet-class>MobileController.DisplayAllDisasters</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registration</servlet-name>
         <url-pattern>/registration</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>RcampDetails</servlet-name>
         <url-pattern>/RcampDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisplayAllDisasters</servlet-name>
+        <url-pattern>/DisplayAllDisasters</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
