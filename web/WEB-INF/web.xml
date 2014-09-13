@@ -4,9 +4,17 @@
         <servlet-name>registration</servlet-name>
         <servlet-class>Controller.registration</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>volunteerLogin</servlet-name>
+        <servlet-class>Controller.volunteerLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registration</servlet-name>
         <url-pattern>/registration</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>volunteerLogin</servlet-name>
+        <url-pattern>/volunteerLogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
