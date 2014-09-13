@@ -21,10 +21,14 @@ public class ReliefCampDetails {
         Address="";
         Contact="";
     }
-    public ReliefCampDetails(int Campid){
+    public ReliefCampDetails(int Did,int Campid,String addr,String ph){
+        DisasterID=Did;
         CampID=Campid;
-        Controller.Database.Database ConDB=new Controller.Database.Database();
-        Address=ConDB.getCampAddress(Campid);
-        Contact=ConDB.getCampContact(Campid);
+        Address=addr;
+        Contact=ph;
     }
+    public int getDisasterID()  {return DisasterID;}
+    public int getCampID()      {return CampID;}
+    public String getAddress()  {return Address;}
+    public String getContact()  {return Contact;}
 }

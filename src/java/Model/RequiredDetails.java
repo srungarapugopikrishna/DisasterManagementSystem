@@ -12,27 +12,25 @@ package Model;
  */
 public class RequiredDetails {
     int DisasterID;
-    String Volunteers;
-    String Food;
-    String Water;
-    String Cloth;
-    String Medical;
-    String ReliefCampDetails;
+    int Volunteers;
+    int Food;
+    int Medical;
+    
     public RequiredDetails(){
-         DisasterID=0;
-         Volunteers
-                =Food
-                =Water 
-                =Cloth
-                =Medical
-                =ReliefCampDetails; 
+         DisasterID
+                 = Volunteers 
+                 = Food
+                 =Medical; 
     }
-    public RequiredDetails(int Did){
+    public RequiredDetails(int Did,int volunteersCount,int FoodQuantity,int MedicalKits){
         DisasterID=Did;
         Controller.Database.Database ConDB=new Controller.Database.Database();
-        Volunteers=ConDB.getVolunteers(Did); 
-        Food=ConDB.getFood(Did);
-        Medical=ConDB.getMedical(Did);
-        ReliefCampDetails=ConDB.getReliefCampDetails(Did);
+        Volunteers=volunteersCount; 
+        Food=FoodQuantity;
+        Medical=MedicalKits;
     }
+    public int getDisasterID()  {return DisasterID;}
+    public int getVolunteers()  {return Volunteers;}
+    public int getFood()        {return Food;}
+    public int getMedical()        {return Medical;}
 }
