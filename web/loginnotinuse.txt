@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
+    <title>Disaster management system</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/queries.css">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	  <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Sintony:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+		<header class="clearfix">
+		    <div class="logo col-md-3"><h2 class="logo-text">Disaster Management system</h2></div>
+		    <nav class="clearfix">
+            <ul class="clearfix">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="disaster.html">Current Disaster</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="report.html">Report</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="#" class="last">contact</a></li>
+            </ul>
+        </nav>
+        <div class="pullcontainer">
+        <a href="#" id="pull"><i class="fa fa-bars fa-2x"></i></a>
+        </div>     
+		</header>
+     <div class="banner">
+    <ul>
+        <li style="background-image: url('img/01.jpg');">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="hero-title">
+                  Lets Save each life met with disaster.
+                </div>
+              <p class="hero-content">Provinding solution to Government And Ngos round the clock</p>
+              <a href="#" class="hero-btn">Get Report</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li style="background-image: url('img/02.jpg');">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="hero-title">
+                  Helping Hand In Disaster Management System On Global Scale
+                </div>
+              <p class="hero-content">Providing a relief solution in real time with action plans and a complete solution until the last life is rescued</p>
+              <a href="#" class="hero-btn">BEER ME!</a>
+              </div>
+            </div>
+          </div>
+        </li>
+    </ul>
+</div>
+    <div class="container">
+    <div class="arrow"></div>
+    </div>
+    <div class="container carousel">
+      <div class="row">
+																<h3>Login </h3>
+            <p>   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#rollno").hide();
+                $("#mentoremail").hide();
+                $("#bat").hide();
+                $("#radio2").click(function() {
+                    $("#rollno").hide();
+                    $("#mentoremail").show();
+                    $("#bat").hide();
+                });
+                $("#radio").click(function() {
+                    $("#rollno").show();
+                    $("#bat").show();
+                    $("#mentoremail").hide();
+                });
+            });
+        </script>
+
+    </head>
+    <body>
+        <h1 align="center">Register here</h1>
+
+        <form id="form1" name="form1" method="post" action="registration">
+            <div align="center">
+                <table width="564" border="0" align="center" cellpadding="5" cellspacing="5">
+                    <tr>
+                        <td width="163"><div align="right">Username :</div></td>
+                        <td width="391"><div align="left">
+                                <input type="text" name="username" id="textfield">
+                            </div></td>
+                    </tr>
+                    <tr>
+                        <td><div align="right">Email Id :</div></td>
+                        <td><div align="left">
+
+                                <input type="email" name="email" id="textfield2">
+                            </div></td>
+                    </tr>
+                    <tr>
+                        <td><div align="right">Password : </div></td>
+                        <td><div align="left">
+                                <input type="password" name="password" id="password">
+                            </div></td>
+                    </tr>
+                    <tr>
+                        <td><div align="right">Re-enter Password :</div></td>
+                        <td><div align="left">
+
+                                <input type="password" name="password2" id="password2">
+                            </div></td>
+                    </tr>
+
+                    <tr>
+                        <td><div align="right">Learning Center </div></td>
+                        <td><div align="left">
+                                <select name="learningCenter" id="select3">
+                                    <option value="lc1">lc1</option>
+                                    <option value="lc2">lc2</option>
+                                    <option value="lc3">lc3</option>
+                                </select>
+                            </div></td>
+                    </tr>
+                    <tr>
+                        <td><div align="right"></div></td>
+                        <td><table width="394" border="0">
+                                <tr>
+                                    <td width="85"><input type="radio" name="radio" id="radio" value="radio" ">
+                                        Student</td>
+                                    <td width="293"><div align="center" id = "rollno">
+                                            <table width="277" border="0">
+                                                <tr>
+                                                    <td width="92"></td>
+                                                    <td width="132"><input type="text" name="user_rollno" id="textfield3" value=""></td>
+                                                </tr>
+                                            </table>
+                                        </div></td>
+                                </tr>
+
+
+
+                                <tr>
+                                    <td><input type="radio" name="radio" id="radio2" value="radio2" >
+                                        Mentor</td>
+                                    <td><div align="center" id = "mentoremail">
+                                            <table width="278" border="0">
+                                                <tr>
+                                                    <td width="92">Email :</td>
+                                                    <td width="126"><input type="email" name="mentor_emailid" id="email"></td>
+                                                </tr>
+                                            </table>
+                                        </div></td>
+                                </tr>
+                            </table></td>
+                    </tr>
+                    <tr id ="bat">
+
+                    <!--   <td><div align="right">Batch : </div></td>
+                        <td><div><div align="left" >Starting Year
+                                    <select name="select" id="select">
+                                        <option value=""> </option>
+                                        <option value="2011">2011</option>
+                                        <option value="2012">2012</option>
+                                        <option value="2013">2013</option>
+                                        <option value="2014">2014</option>
+                                    </select>
+                                    Ending Year
+                                    <select name="select2" id="select2">
+                                        <option value=""> </option>
+                                        <option value="2011">2011</option>
+                                        <option value="2012">2012</option>
+                                        <option value="2013">2013</option>
+                                        <option value="2014">2014</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <td><div align="right">Phone Number :</div></td>
+                        <td><div align="left">
+                                <input type="tel" name="tel" id="tel">
+                            </div></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><div align="center">
+                                <input type="submit" name="submit" id="submit" value="Submit">
+                            </div>
+                            <div align="left"></div></td>
+                    </tr>
+                </table>
+                <p>&nbsp;</p>
+        </form>
+        <p>&nbsp;</p>
+        <div align="center"></div></p>
+          </div>
+        
+       
+          <div class="col-md-2">
+            <ul class="footer-links">
+              <li><a href="#">List One</a></li>
+              <li><a href="#">Page Two</a></li>
+              <li><a href="#">Design</a></li>
+              <li><a href="#">Work</a></li>
+              <li><a href="#">Contact Me</a></li>
+            </ul>
+        </nav>
+        <div class="pullcontainer">
+          </div>
+        </div>
+      </div>  
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/unslider.min.js"></script>
+  </body>
+</html>
