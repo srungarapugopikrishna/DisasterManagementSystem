@@ -44,7 +44,7 @@ public class registration extends HttpServlet {
         boolean RegistrationSucessfull;
         RegistrationSucessfull = Database.addVolunteerRegistration(vdetails);
         if (RegistrationSucessfull) {
-            rd = request.getRequestDispatcher("index.html");
+            rd = request.getRequestDispatcher("volunteeraccount.html");
         } else {
             rd = request.getRequestDispatcher("UnSucessfullRegistration.html");
         }

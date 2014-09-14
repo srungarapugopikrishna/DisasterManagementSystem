@@ -35,6 +35,7 @@ public class volunteerLogin extends HttpServlet {
         String username = request.getParameter("username");
         String pwd = request.getParameter("pwd");
         RequestDispatcher rd = null;
+        //System.out.println(" username ,pwd-->"+username+"---"+pwd);
         boolean loginsucessfull = Database.checkLogin(username, pwd);
         if (loginsucessfull) {
             if(!username.equals("admin@admin.com"))

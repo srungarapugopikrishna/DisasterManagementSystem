@@ -21,12 +21,12 @@
 		<header class="clearfix">
 		    <div class="logo col-md-3"><h2 class="logo-text">Disaster Management system</h2></div>
 		    <nav class="clearfix">
-          <ul class="clearfix">
-                <li><a href="reliefcamp.html" class="active"> Relief camp</a></li>
+            <ul class="clearfix">
+                  <li><a href="disasterinfo.html" class="active"> Add disaster</a></li>
                 
-                <li><a href="survivor.html">add surviour</a></li>
-                <li><a href="deadinfo.html">Add dead detail</a></li>
+                <li><a href="reliefcamp.html">Requirement details add</a></li>
                 <li><a href="logout.html">Logout</a></li>
+                
             </ul>
         </nav>
         </header>
@@ -34,58 +34,58 @@
 	</head>
   <body>
 
-   <h1 align="center">  Dead details </h1>
+   <h1 align="center">  Relief Camp details </h1>
 
-       <form id="Dead info" name="details" method="post" action="deadDetails">
+        <form id="relief_camp" name="requirement" method="post" action="RcampDetails">
             <div align="center">
 			
                 <table width="564" border="0" align="center" cellpadding="5" cellspacing="5">
                     <tr><br>
-                        <td width="163"><div align="right"> Disaster Name :</div></td>
+                        <td width="163"><div align="right">Disaster Name :</div></td>
                         <td width="391"><div align="left">
-                                <input type="text" name="disaster_name" id="textfield">
-                            </div></td>
-                    </tr>
-                    <tr><br>
-                        <td width="163"><div align="right"> Person Name :</div></td>
-                        <td width="391"><div align="left">
-                                <input type="text" name="dead_Person_name" id="textfield">
+                                <input type="text" name="disaster_Name" id="textfield">
                             </div></td>
                     </tr>
                     <tr>
-                        <td><div align="right">age :</div></td>
+                        <td><div align="right">Relief camp ID </div></td>
+                        <td><div align="left">
+                                <input type="text" name="relief_Camp_ID" id="camp_add"><br />
+                            </div></td>
+                    </tr>
+                    <tr>
+                        <td><div align="right">Relief camp Ph </div></td>
+                        <td><div align="left">
+                                <input type="text" name="relief_Ph" id="camp_ph"><br />
+                            </div></td>
+                    </tr>
+                    <tr>
+                        <td><div align="right">Relief camp Address </div></td>
+                        <td><div align="left">
+                                <input type="text" name="relief_addrs" id="camp_add"><br />
+                            </div></td>
+                    </tr>
+                    <tr>
+                        <td><div align="right">Volunteers Required </div></td>
                         <td><div align="left">
 
-                                <input type="text" name="age" id="age"><br />
+                                <input type="text" name="volunteers_Req" id="volunteer_no"><br />
                             </div></td>
                     </tr>
                     <tr>
-                        <td><div align="right">Sex :</div></td>
+                        <td><div align="right">Food Packs Required</div></td>
                         <td><div align="left">
-                                <input type="text" name="sex" id="sex"><br />
+                                <input type="text" name="total_foodpacks_Required" id="food1"><br />
                             </div></td>
                     </tr>
                     <tr>
-                        <td><div align="right">Rescued Location :</div></td>
+                        <td><div align="right">Medical Kits Required </div></td>
                         <td><div align="left">
-
-                                <input type="text" name="rescued_location" id="address">
+                                <input type="text" name="medicalKits_required" id="medical1">
                             </div></td>
                     </tr>
-                    <tr>
-                        <td><div align="right">Current Location :</div></td>
-                        <td><div align="left">
-
-                                <input type="text" name="current_location" id="address">
-                            </div></td>
-                    </tr>
-                    <tr>
-                        <td><div align="right">contact number :</div></td>
-                        <td><div align="left">
-                                <input type="text" name="tel" id="tel">
-                            </div></td>
-                    </tr>
-					
+		    
+		    
+		
                         <td colspan="2"><div align="center">
                                 <input type="submit" name="submit" id="submit" value="Submit">
                             </div>
