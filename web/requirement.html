@@ -22,7 +22,7 @@
 		    <div class="logo col-md-3"><h2 class="logo-text">Disaster Management system</h2></div>
 		    <nav class="clearfix">
             <ul class="clearfix">
-                <li><a href="diasterinfo.html" class="active"> Add disaster</a></li>
+                <li><a href="disasterinfo.html" class="active"> Add disaster</a></li>
                 
                 <li><a href="requirement.html">Requirement details add</a></li>
                 <li><a href="Approve.html">Approve Volunteer</a></li>
@@ -33,58 +33,49 @@
 	</head>
   <body>
 
-   <h1 align="center">  Dead details </h1>
+   <h1 align="center">  Requirement details </h1>
 
-       <form id="Dead info" name="details" method="post" action="deadDetails">
+        <form id="requirementinfo" name="requirement" method="post" action="requirement">
             <div align="center">
 			
                 <table width="564" border="0" align="center" cellpadding="5" cellspacing="5">
                     <tr><br>
-                        <td width="163"><div align="right"> Disaster Name :</div></td>
+                        <td width="163"><div align="right">Disaster Name :</div></td>
                         <td width="391"><div align="left">
-                                <input type="text" name="disaster_name" id="textfield">
-                            </div></td>
-                    </tr>
-                    <tr><br>
-                        <td width="163"><div align="right"> Person Name :</div></td>
-                        <td width="391"><div align="left">
-                                <input type="text" name="dead_Person_name" id="textfield">
+                                <input type="text" name="dname" id="textfield">
                             </div></td>
                     </tr>
                     <tr>
-                        <td><div align="right">age :</div></td>
+                        <td><div align="right">Volunteers :</div></td>
                         <td><div align="left">
 
-                                <input type="text" name="age" id="age"><br />
+                                <input type="text" name="volunteer_name" id="volunteer"><br />
                             </div></td>
                     </tr>
                     <tr>
-                        <td><div align="right">Sex :</div></td>
+                        <td><div align="right">Food </div></td>
                         <td><div align="left">
-                                <input type="text" name="sex" id="sex"><br />
+                                <input type="text" name="total_food" id="food"><br />
                             </div></td>
                     </tr>
                     <tr>
-                        <td><div align="right">Rescued Location :</div></td>
-                        <td><div align="left">
-
-                                <input type="text" name="rescued_location" id="address">
-                            </div></td>
-                    </tr>
-                    <tr>
-                        <td><div align="right">Current Location :</div></td>
+                        <td><div align="right">water :</div></td>
                         <td><div align="left">
 
-                                <input type="text" name="current_location" id="address">
+                                <input type="text" name="water" id="water">
                             </div></td>
-                    </tr>
-                    <tr>
-                        <td><div align="right">contact number :</div></td>
+                    </tr> <tr>
+                        <td><div align="right">medical</div></td>
                         <td><div align="left">
-                                <input type="text" name="tel" id="tel">
+                                <input type="text" name="medical" id="medical">
                             </div></td>
                     </tr>
-					
+					<tr>
+                        <td><div align="right">Relief camp </div></td>
+                        <td><div align="left">
+                                <input type="text" name="relief_camp" id="camp"><br />
+                            </div></td>
+                    </tr>
                         <td colspan="2"><div align="center">
                                 <input type="submit" name="submit" id="submit" value="Submit">
                             </div>

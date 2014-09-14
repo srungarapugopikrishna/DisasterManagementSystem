@@ -28,6 +28,10 @@
         <servlet-name>DisplayAllDisasters</servlet-name>
         <servlet-class>MobileController.DisplayAllDisasters</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PeopleSearch</servlet-name>
+        <servlet-class>Controller.PeopleSearch</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registration</servlet-name>
         <url-pattern>/registration</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>DisplayAllDisasters</servlet-name>
         <url-pattern>/DisplayAllDisasters</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PeopleSearch</servlet-name>
+        <url-pattern>/PeopleSearch</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

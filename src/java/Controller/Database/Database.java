@@ -286,4 +286,23 @@ public class Database {
         }
         return v;
     }
+
+    public static Vector getSearchItems(String PersonName, int age) {
+            Vector v=new Vector();
+           try {
+            getConnected();
+            query = "select * from dms.people where Name="+PersonName+" or age="+age+""+";";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            while (rs.next()) {
+                v.add(rs.getString(1)+":"+rs.getString(2)+":"+rs.getString(3)+":"+rs.getString(4)+":"+rs.getString(5)+":"+rs.getString(6)+":"+rs.getString(7)+":"+rs.getString(8)+":"+rs.getString(9)+":"+rs.getString(10));
+            }
+            closeConnection();
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return v;
+    }
 }

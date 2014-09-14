@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Controller;
 
 import Controller.Database.Database;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
+import static java.lang.System.out;
+import java.util.Vector;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gopi
  */
-public class volunteerLogin extends HttpServlet {
+public class PeopleSearch extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,21 +34,14 @@ public class volunteerLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //  System.out.println("-*-*-*-In VolunteerLogin-*-*-*-");
-        String username = request.getParameter("username");
-        String pwd = request.getParameter("pwd");
-        RequestDispatcher rd = null;
-        boolean loginsucessfull = Database.checkLogin(username, pwd);
-        if (loginsucessfull) {
-            if(!username.equals("admin"))
-            {rd = request.getRequestDispatcher("volunteeraccount.html");}
-            else{rd = request.getRequestDispatcher("adminaccount.html");}
-        } else {
-            rd = request.getRequestDispatcher("InvalidDetails.html");
-        }
-        if (rd != null) {
-            rd.forward(request, response);
-        }
+         String PersonName = request.getParameter("PersonName");
+         String Age = request.getParameter("Age");
+         int age=Integer.parseInt(Age);
+         Vector v=Database.getSearchItems(PersonName,age);
+         for(int i=0;i<v.size();i++){
+                 out.println(v.get(i)+":");
+             }
+         out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -86,4 +82,5 @@ public class volunteerLogin extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }
