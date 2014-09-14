@@ -291,7 +291,7 @@ public class Database {
             Vector v=new Vector();
            try {
             getConnected();
-            query = "select * from dms.people where Name="+PersonName+" or age="+age+""+";";
+            query = "select * from dms.people where Name='"+PersonName+"' or age="+age+""+";";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             

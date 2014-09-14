@@ -32,6 +32,10 @@
         <servlet-name>PeopleSearch</servlet-name>
         <servlet-class>Controller.PeopleSearch</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>peopleSearch</servlet-name>
+        <servlet-class>MobileController.peopleSearch</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registration</servlet-name>
         <url-pattern>/registration</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>PeopleSearch</servlet-name>
         <url-pattern>/PeopleSearch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>peopleSearch</servlet-name>
+        <url-pattern>/peopleSearch</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Controller;
+package MobileController;
 
 import Controller.Database.Database;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gopi
  */
-public class PeopleSearch extends HttpServlet {
+public class peopleSearch extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,15 +34,17 @@ public class PeopleSearch extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         String PersonName = request.getParameter("PersonName");
+        PrintWriter out = response.getWriter();
+        String PersonName = request.getParameter("PersonName");
          String Age = request.getParameter("Age");
          int age=Integer.parseInt(Age);
          Vector v=Database.getSearchItems(PersonName,age);
+         //Vector v=Database.getSearchItems("Dharma",20);
          for(int i=0;i<v.size();i++){
                  out.println(v.get(i));
              }
          out.close();
-    }
+        }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
