@@ -47,7 +47,9 @@ public class RcampDetails extends HttpServlet {
         ReliefCampDetails rCamp=new ReliefCampDetails(DisasterId,Campid,relief_add,relief_Ph,noOfFudPacks,noOfMedicalKits,noOfVolunteers);  
         Database.addReliefCampAndRequirementsDetails(rCamp);
         RequestDispatcher rd = null;
-        rd = request.getRequestDispatcher("adminaccount.html");
+        if(DisasterId==0){
+        rd = request.getRequestDispatcher("adminaccount.html");}
+        else{rd = request.getRequestDispatcher("volunteeraccount.html");}
         if (rd != null) {
             rd.forward(request, response);
         }
