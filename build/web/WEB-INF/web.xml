@@ -36,6 +36,10 @@
         <servlet-name>peopleSearch</servlet-name>
         <servlet-class>MobileController.peopleSearch</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MobileLogin</servlet-name>
+        <servlet-class>MobileController.MobileLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registration</servlet-name>
         <url-pattern>/registration</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>peopleSearch</servlet-name>
         <url-pattern>/peopleSearch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MobileLogin</servlet-name>
+        <url-pattern>/MobileLogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

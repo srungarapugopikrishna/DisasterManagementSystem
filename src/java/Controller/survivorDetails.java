@@ -35,6 +35,7 @@ public class survivorDetails extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         //---------------------------
+        //survivorDetails?disaster_name=xxxx&survivor_name=xxxx&age=xxxx&sex=xxxx&rescued_location=xxxx&tel=xxxx
         String disaster_name = request.getParameter("disaster_name");
         String survivor_name = request.getParameter("survivor_name");
         String age = request.getParameter("age");

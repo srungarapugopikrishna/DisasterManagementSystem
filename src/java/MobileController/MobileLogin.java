@@ -9,7 +9,7 @@ package MobileController;
 import Controller.Database.Database;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Vector;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gopi
  */
-public class DisplayAllDisasters extends HttpServlet {
+public class MobileLogin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,12 +34,16 @@ public class DisplayAllDisasters extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-             Vector v=Database.getAllDisasters();
-             for(int i=0;i<v.size();i++){
-                 out.println(v.get(i)+":");
-                  
-             }
-         out.close();
+            /* TODO output your page here. You may use following sample code. */
+            String username = request.getParameter("username");
+            String pwd = request.getParameter("pwd");
+            RequestDispatcher rd = null;
+            boolean loginsucessfull = Database.checkLogin(username, pwd);
+            if (loginsucessfull) {
+                out.println(1);
+            } else {
+                 out.println(0);
+            }
         }
     }
 

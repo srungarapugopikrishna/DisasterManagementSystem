@@ -9,7 +9,6 @@ package MobileController;
 import Controller.Database.Database;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.util.Vector;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,10 +37,10 @@ public class peopleSearch extends HttpServlet {
         String PersonName = request.getParameter("PersonName");
          String Age = request.getParameter("Age");
          int age=Integer.parseInt(Age);
-         Vector v=Database.getSearchItems(PersonName,age);
-         //Vector v=Database.getSearchItems("Dharma",20);
+          Vector v=Database.getSearchItems(PersonName,age);
+        // Vector v=Database.getSearchItems("Dharma",20);
          for(int i=0;i<v.size();i++){
-                 out.println(v.get(i));
+                 out.println(v.get(i)+"#");
              }
          out.close();
         }
