@@ -6,9 +6,6 @@
 
 package Model;
 
-import Controller.Database.Database;
-import java.sql.Blob;
-
 /**
  *
  * @author gopi

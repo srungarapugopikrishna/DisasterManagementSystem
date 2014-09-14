@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -82,7 +83,13 @@ public class upload extends HttpServlet {
         }
     } catch (FileUploadException e) {
         throw new ServletException("Cannot parse multipart request.", e);
-    }    
+    }   
+      RequestDispatcher rd = null;
+      rd = request.getRequestDispatcher("volunteeraccount.html");
+      if (rd != null) {
+            rd.forward(request, response);
+        }
+          
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

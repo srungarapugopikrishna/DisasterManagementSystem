@@ -9,6 +9,7 @@ package Controller;
 import Controller.Database.Database;
 import Model.PeopleDetails;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,6 +44,26 @@ public class deadDetails extends HttpServlet {
         int Age=Integer.parseInt(age);
         PeopleDetails People=new PeopleDetails(DisasterId,dead_Person_name,Age,sex,0,rescued_location,current_location,tel);
         Database.addPeopleDetailsToDB(People);
+        
+        
+        PrintWriter out = response.getWriter();
+        try {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<form action=\"upload?picname="+dead_Person_name+".jpg"+"\" method=\"post\" enctype=\"multipart/form-data\">");
+            out.println("<input type=\"file\" name=\"file\" /><br>");
+            out.println("<input type=\"submit\" />");
+            out.println("</form>");
+            out.println("</body>");
+            out.println("</html>");
+        } finally {
+            out.close();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
