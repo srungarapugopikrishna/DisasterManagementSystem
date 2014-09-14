@@ -9,6 +9,7 @@ package Controller;
 import Controller.Database.Database;
 import Model.DisasterDetails;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,6 +44,11 @@ public class DisasterDetailsDB extends HttpServlet {
         int DisasterId=Database.addDisasterName(disasterName);
         DisasterDetails Ddetails=new DisasterDetails(DisasterId,disasterName,disasterType,locationName,total_death,property_Lost,total_injured);
         Database.addDisasterDetailsToDB(Ddetails);
+        RequestDispatcher rd = null;
+        rd = request.getRequestDispatcher("adminaccount.html");
+        if (rd != null) {
+            rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

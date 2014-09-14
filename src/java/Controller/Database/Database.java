@@ -212,7 +212,7 @@ public class Database {
         try {
             getConnected();
             String disaster_Type_Id;
-            query = "select type_id from dms.disaster_types where disaster_type="+disasterType;
+            query = "select type_id from dms.disaster_types where disaster_type='"+disasterType+"'";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()) {
@@ -259,7 +259,7 @@ public class Database {
         try {
             getConnected();
             query = "INSERT INTO dms. reliefcampandrequirementdetails (`did`, camp_id , Address, Phone_no, FoodPacks,MedicalKits,VolunteersRequired)"
-+ "VALUES (" +rCamp.getDisasterID()+ ", "+rCamp.getCampID()+ ", '" + rCamp.getAddress() + "', '" + rCamp.getContact() + "', '" + rCamp.getFoodPacks() + "', '" + rCamp.getMedicalDetails() + "', '" + rCamp.getNoOfVolunteers() + "')";
++ "VALUES (" +rCamp.getDisasterID()+ ", '"+rCamp.getCampID()+ "', '" + rCamp.getAddress() + "', '" + rCamp.getContact() + "', '" + rCamp.getFoodPacks() + "', '" + rCamp.getMedicalDetails() + "', '" + rCamp.getNoOfVolunteers() + "')";
             Statement stmt = con.createStatement();
             stmt.executeUpdate(query);
             closeConnection();

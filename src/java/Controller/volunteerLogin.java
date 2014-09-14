@@ -37,7 +37,7 @@ public class volunteerLogin extends HttpServlet {
         RequestDispatcher rd = null;
         boolean loginsucessfull = Database.checkLogin(username, pwd);
         if (loginsucessfull) {
-            if(!username.equals("admin"))
+            if(!username.equals("admin@admin.com"))
             {rd = request.getRequestDispatcher("volunteeraccount.html");}
             else{rd = request.getRequestDispatcher("adminaccount.html");}
         } else {

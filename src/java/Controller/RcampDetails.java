@@ -9,6 +9,7 @@ package Controller;
 import Controller.Database.Database;
 import Model.ReliefCampDetails;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,6 +46,11 @@ public class RcampDetails extends HttpServlet {
         int noOfVolunteers=Integer.parseInt(VolunteersNeeded);
         ReliefCampDetails rCamp=new ReliefCampDetails(DisasterId,Campid,relief_add,relief_Ph,noOfFudPacks,noOfMedicalKits,noOfVolunteers);  
         Database.addReliefCampAndRequirementsDetails(rCamp);
+        RequestDispatcher rd = null;
+        rd = request.getRequestDispatcher("adminaccount.html");
+        if (rd != null) {
+            rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
